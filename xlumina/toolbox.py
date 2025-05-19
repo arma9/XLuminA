@@ -388,7 +388,7 @@ def lorentzian(x, x0, gamma):
         x0 (float): location of the peak of the distribution
         gamma (float): scale parameter. Specifies FWHM = 2 * gamma. 
     """
-    return (1/jnp.pi) * (gamma / (x-x0)**2 + gamma**2)
+    return (1/jnp.pi) * (gamma / ((x-x0)**2 + gamma**2))
 
 def lorentzian_2d(xy, amplitude, x0, y0, gamma_x, gamma_y):
     """ 
