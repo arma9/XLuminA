@@ -2299,3 +2299,35 @@ def shake_setup_jit(key, resolution):
     random_noise_wps = jnp.squeeze(random.choice(key3, jnp.array([-1,1]), shape=(1, 2*NS['number of wps'])).astype('int8'), axis=0) * jnp.squeeze(random.uniform(key3, shape=(1, 2*NS['number of wps']), minval=minval_phase, maxval=maxval_phase), axis=0) 
     
     return random_noise_distances, random_noise_slms, random_noise_wps, random_noise_amps, key0, key
+
+def phase_shifter(input_field:object, phase_shift):
+    """
+    Phase shifter element.
+    
+    Parameters:
+        input_field: Input light field
+        phase_shift: Phase shift (radians) (if light is vectorized, phase_shift is a tuple of two values: (phase_shift_x, phase_shift_y))
+    
+    Returns:
+        output_field: Output field after phase shift
+    """
+    if input_field.info == 'Wave optics light':
+        output_field = ScalarLight(input_field.x, input_field.y, input_field.wavelength)
+        output_field.field = input_field.field * jnp.exp(1j*phase_shift)
+
+    elif input_field.info == 'Vectorized light':
+
+        if isinstance(phase_shift, tuple) and len(phase_shift) == 3:
+            phase_shift_x, phase_shift_y, phase_shift_z = phase_shift
+        else:
+            phase_shift_x = phase_shift
+            phase_shift_y = phase_shift
+            phase_shift_z = phase_shift
+
+        output_field = VectorizedLight(input_field.x, input_field.y, input_field.wavelength)
+        
+        output_field.Ex = input_field.Ex * jnp.exp(1j*phase_shift_x)
+        output_field.Ey = input_field.Ey * jnp.exp(1j*phase_shift_y)
+        output_field.Ez = input_field.Ez * jnp.exp(1j*phase_shift_z)
+
+    return output_field

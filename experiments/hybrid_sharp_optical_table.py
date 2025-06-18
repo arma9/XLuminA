@@ -3,7 +3,7 @@ import os
 import sys
 
 # Setting the path for XLuminA modules:
-current_path = os.path.abspath(os.path.join('..'))
+current_path = os.path.abspath(os.path.join('.'))
 module_path = os.path.join(current_path)
 
 if module_path not in sys.path:

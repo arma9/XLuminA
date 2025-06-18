@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import jax.numpy as jnp
 import h5py
@@ -703,8 +704,11 @@ class MultiHDF5DataLoader:
         self.directory = directory
         self.batch_size = batch_size
 
+        print(self.directory)
+
+        directory_files = os.listdir(self.directory)
         # Get a list of all HDF5 files in the directory
-        self.files = [f for f in os.listdir(self.directory) if f.endswith('.hdf5')]
+        self.files = [f for f in directory_files if f.endswith('.hdf5')]
 
         if not self.files:
             raise ValueError(f"No HDF5 files found in directory: {self.directory}")

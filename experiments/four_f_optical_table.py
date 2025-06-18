@@ -3,13 +3,16 @@ import os
 import sys
 
 # Setting the path for XLuminA modules:
-current_path = os.path.abspath(os.path.join('..'))
+current_path = os.path.abspath(os.path.join('.'))
 module_path = os.path.join(current_path)
 
 if module_path not in sys.path:
     sys.path.append(module_path)
 
-from xlumina.__init__ import um, nm, cm
+print(module_path)
+print(os.getcwd())
+
+from xlumina import um, nm, cm
 from xlumina.wave_optics import *
 from xlumina.optical_elements import SLM
 from xlumina.toolbox import space

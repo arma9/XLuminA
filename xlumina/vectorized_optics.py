@@ -488,7 +488,5 @@ class PolarizedLightSource(VectorizedLight):
         self.Ex = normalized_jones[0] * pw
         self.Ey = normalized_jones[1] * pw
         self.Ez = jnp.zeros((jnp.shape(self.x)[0], jnp.shape(self.x)[0]))
-
-
             
         

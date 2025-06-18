@@ -1,4 +1,4 @@
-# ✨ XLuminA ✨
+# This is an extension of the original XLuminA repo from Rodriguez et al., 2024., expanding the scope of its XLA and autodiff capabilities and presenting new experiments and optimization setups.
 
 [![Nature Communications](https://img.shields.io/badge/Nat_Commun-15,_10658_(2024)-b31b1b.svg)](https://www.nature.com/articles/s41467-024-54696-y)
 [![Downloads](https://pepy.tech/badge/xlumina)](https://pepy.tech/project/xlumina)

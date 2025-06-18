@@ -2,12 +2,13 @@ import os
 import sys
 
 # Setting the path for XLuminA modules:
-current_path = os.path.abspath(os.path.join('..'))
+current_path = os.path.abspath(os.path.join('.'))
 module_path = os.path.join(current_path)
 
 if module_path not in sys.path:
     sys.path.append(module_path)
-    
+
+
 import time
 import jax
 from jax import grad, jit
@@ -17,12 +18,12 @@ import jax.numpy as jnp
 import gc # Garbage collector
 
 # Use this for pure topological discovery:
-from xlumina.six_times_six_ansatz_with_fixed_PM import * #<--- use this for 6x6 ansatz
-# from xlumina.hybrid_with_fixed_PM import * # <--- use this for 3x3 with fixed masks
+from six_times_six_ansatz_with_fixed_PM import * #<--- use this for 6x6 ansatz
+# from hybrid_with_fixed_PM import * # <--- use this for 3x3 with fixed masks
 
 # Use this for hybrid optimization:
-# from xlumina.hybrid_sharp_optical_table import *  # <--- use this for sharp focus 
-# from xlumina.hybrid_sted_optical_table import * # <--- use this for sted
+# from hybrid_sharp_optical_table import *  # <--- use this for sharp focus 
+# from hybrid_sted_optical_table import * # <--- use this for sted
 
 """
 OPTIMIZER - LARGE-SCALE SETUPS

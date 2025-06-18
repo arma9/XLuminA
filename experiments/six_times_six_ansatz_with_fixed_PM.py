@@ -3,13 +3,15 @@ import os
 import sys
 
 # Setting the path for XLuminA modules:
-current_path = os.path.abspath(os.path.join('..'))
+current_path = os.path.abspath(os.path.join('.'))
 module_path = os.path.join(current_path)
 
 if module_path not in sys.path:
     sys.path.append(module_path)
+
+
     
-from __init__ import um, nm, cm, mm
+from xlumina import um, nm, cm, mm
 from xlumina.vectorized_optics import *
 from xlumina.optical_elements import six_times_six_ansatz
 from xlumina.loss_functions import vectorized_loss_hybrid
