@@ -1,5 +1,7 @@
 import os
 import sys
+from typing import Tuple
+from typing import List
 
 # Setting the path for XLuminA modules:
 current_path = os.path.abspath(os.path.join('.'))
